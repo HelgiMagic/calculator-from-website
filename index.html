@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+        <div class="col-xl-11 col-lg-10 col-md-9 col-sm-15 mx-0 px-0 ipr-workarea">
+			
+            <!-- +3 закрывающих div в футере-->
+            
+                                                        <div class="container structure-inner">
+                                <div class="col-15 w-100">
+                                <div class="breadcrumb"><!--[{"TITLE":"Главная страница","LINK":"\/"},{"TITLE":"Сервис online-раскроя","LINK":"\/cutting\/"}]--><a href="/" title="Главная страница" class="index0of1">Главная страница</a></div>                    <h1>Сервис online-раскроя</h1>
+                                    <div>
+                <div class="box-grid row">
+                <div class="col-15 old-col-11">
+                    <div class="box-params list-params">
+                        <div class="group text-nowrap text-left">
+                            <span class="title mr-3">Размер листа (мм)</span>
+                            <input type="text" class="form-control" name="grid-width" value="">
+                            <span class="list-times">×</span>
+                            <input type="text" class="form-control" name="grid-height" value="">
+                        </div>
+                    </div>
+                    <div class="box-params items-params disabled-block">
+                        <div class="title">
+                            <span>Элементы (мм)</span>
+                            <div class="items-params-list-actions">
+                                <a href="#" class="icon-cutting-plus-icon" title="Развернуть список листов"></a>
+                                <a href="#" class="icon-cutting-minus-icon" title="Свернуть список листов"></a>
+                            </div>
+                        </div>
+                        <div class="list">
+                            <div id="item-list">
+                            </div>
+                            <div class="hidden" id="new-grid-item">
+                                <div class="group">
+                                    <label>A:</label> <input type="text" class="form-control" name="new-grid-item-width" value="">
+                                    <label>B:</label> <input type="text" class="form-control" name="new-grid-item-height" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions-wrapper">
+                            <div class="actions">
+                                <a href="#" data-cut-lines-vertical-count="0" data-cut-lines-horizontal-count="1" class="icon-cutting-equals icon-cutting-equals-0-1" title="Предустановленный раскрой 0x1"></a>
+                                <a href="#" data-cut-lines-vertical-count="1" data-cut-lines-horizontal-count="0" class="icon-cutting-equals icon-cutting-equals-1-0" title="Предустановленный раскрой 1x0"></a>
+                                <a href="#" data-cut-lines-vertical-count="1" data-cut-lines-horizontal-count="1" class="icon-cutting-equals icon-cutting-equals-1-1" title="Предустановленный раскрой 1x1"></a>
+                                <a href="#" data-cut-lines-vertical-count="2" data-cut-lines-horizontal-count="2" class="icon-cutting-equals icon-cutting-equals-2-2" title="Предустановленный раскрой 2x2"></a>
+                                <a href="#" class="icon-cutting-add-many" title="Добавить несколько одинаковых элементов"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-params result disabled-block">
+                        <div class="title">Результаты расчета</div>
+                        <ul>
+                            <li><span>Количество листов, шт</span> <span id="total-grid-count" class="value">0</span></li>
+                            <li><span>Общая длина реза, м</span> <span id="total-cut-lenght" class="value">0</span></li>
+                            <li><span>Цена за 1 м реза, ₽</span> <span id="cutting-meter-cost" class="value">0</span></li>
+                            <li><span>Площадь остатка, м²</span> <span id="cutting-meter-remains" class="value">0</span></li>
+                            <li class="total"><span>Стоимость реза</span> <span id="cutting-cost" class="value">0 ₽</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-15">
+                    <div class="grid-options disabled-block">
+                        <div class="scale">100%</div>
+                        <div class="zoom">
+                            <a href="#" class="icon-zoom-area area" title="Установить масштаб 100%"></a>
+                            <a href="#" class="icon-zoom-plus plus" title="Увеличить масштаб на 10%"></a>
+                            <a href="#" class="icon-zoom-minus minus" title="Уменьшить масштаб на 10%"></a>
+                        </div>
+                        <div class="view">
+                            <a href="#" class="icon-list list hidden" title="Вернуться к текущему листу"></a>
+                            <a href="#" class="icon-lists lists" title="Посмотреть все листы"></a>
+                        </div>
+                        <div class="element invisible">
+                            <span class="num">5</span>
+                            <label>A:</label> <input type="text" class="form-control" name="grid-item-width" value="">
+                            <label>B:</label> <input type="text" class="form-control" name="grid-item-height" value="">
+                            <a href="#" class="rotate icon-rotate"></a>
+                        </div>
+                        <div class="name hidden">Лист <span class="num">1</span></div>
+                    </div>
+                    <div class="grid-wrapper disabled-block" style="width: 409px;">
+                    </div>
+                    <div class="grid-controls disabled-block">
+                        <a href="#" class="icon-cutting-help pull-right" title="Справка"></a>
+                        <button id="cutting-get-pdf" class="btn btn-submit"><i class="icon-cutting-save-pdf-icon"></i><span id="button-save-pdf-text">Сохранить в PDF</span></button>
+                        <span class="cutting-manual-wrapper"><input type="checkbox" name="cutting-manual" id="cutting-manual" data-grid-index="0" value="Y"> <label for="cutting-manual" class="cutting-manual-title">Ручная корректировка</label></span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <input type="hidden" id="cutting-setting-cut-line-width" value="4">
+            <input type="hidden" id="cutting-setting-meter-cost" value="30.6">
+            <input type="hidden" id="cutting-element-to-delete-index" value="">
+            <input type="hidden" id="cutting-element-delete-confirmation" value="1">
+            <input type="hidden" id="cutting-setting-min-element-size" value="200">
+            
+            <input type="hidden" id="cutting-setting-min-plate-width" value="1000">
+            <input type="hidden" id="cutting-setting-max-plate-width" value="6000">
+            
+            <input type="hidden" id="cutting-setting-min-plate-height" value="1000">
+            <input type="hidden" id="cutting-setting-max-plate-height" value="6000">
+            
+            <input type="hidden" id="cutting-element-values" value="">
+            <input type="hidden" id="cutting-list-values" value="">
+            </div>
+            
+                        </div>
+                </div>
+                            <div class="nav-bottom pb-2">
+                        <div class="container">
+                        <div class="row">
+                                            <div class="col-lg-6 col-12">
+                                <div class="anotherLinks">
+                                        
+                                <label class="title">
+                            <input type="checkbox">
+                            Услуги            </label>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/service/rabota-v-formate-24kh7/">Работа в формате 24х7</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/service/tekhnicheskoe-soprovozhdenie-proektov-klientov/">Информационное сопровождение</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/service/besplatnoe-predostavlenie-obraztsov-vsekh-materialov/">Образцы всех материалов</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/service/dostavka-zakaza/">Доставка заказа</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/service/rezka-materiala-v-razmer/">Резка материала в размер</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/service/pechat-na-napolnom-pokrytii/">Печать на напольном покрытии</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/payment/bill/">Онлайн-оплата по № заказа</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/cutting/" class="active">BESTLY - РАСКРОЙ</a>
+                                        </div>
+                       
+            
+                                    </div>
+                            </div>
+                            <div class="col-lg-4 col-12 companyCol pt-5 pt-lg-0">
+                                <div class="anotherLinks">
+                                        
+                                <label class="title">
+                            <input type="checkbox">
+                            Компания            </label>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/vakansii/">Вакансии</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/for-business/">Все для бизнеса</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/news/">Новости</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/press/">Пресс-релизы</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/chernyy-spisok/">Черный список</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/blog/">Блог</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/o-kompanii/">О компании</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item indentTop big">
+                                                Адреса и контакты                            </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/contacts/">Москва</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/contacts/#mo_cont_north">Московская область</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/contacts/#spb_cont_north">Санкт-Петербург</a>
+                                        </div>
+                       
+            
+                                    </div>
+                            </div>
+                            <div class="col-lg-5 col-12 shopCol pr-3 px-4 pt-5 pt-lg-0">
+                                <div class="anotherLinks">
+                                        
+                                <label class="title">
+                            <input type="checkbox">
+                            Интернет-магазин            </label>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/payment/">Оплата</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/service/dostavka-zakaza/">Доставка</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/warranty/">Гарантии</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/actions/">Акции</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item indentTop">
+                                                <a href="/agreement/">Пользовательское соглашение</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/upload/BESTLY_offer.pdf">Оферта</a>
+                                        </div>
+                       
+            
+                
+                                <div class="item">
+                                                <a href="/help/">Помощь</a>
+                                        </div>
+                       
+            
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 col-12 pt-5">
+                                                    <a href="http://orphus.ru" rel="nofollow" id="orphus" target="_blank" class="hidden" title="Система Orphus"><img alt="Система Orphus" src="/local/templates/ipromo/img/c/orphus.gif" border="0" width="88" height="31"></a>
+                                <div class="missingText">Нашли опечатку?<br>Выделите и нажмите Ctrl+Enter</div>
+                                </div>
+                                <div class="col-lg-5 col-12 pt-5">
+                                    <a href="/sitemap/" class="map border-0">Карта сайта</a>					</div>
+                                <div class="col-lg-5 col-12 pt-5">
+                                <img alt="Принимаемые карты" src="/local/templates/ipromo/img/cards1.png" align="left">
+                                </div>
+                            </div>
+                            <div class="row pt-5">
+                                <div class="col-8">
+                                    <b>Адрес для самовывоза:</b><br>
+                                    <span><a href="/contacts/#mo_cont_north">    141051, деревня Красная Горка, Промышленная улица, вл4с1
+            </a></span>
+                                </div>
+                                <div class="col-7">
+                                    <b>Режим работы:</b><br>
+                                    <span>    пн-пт 09:00—19:00, сб 10:00-14:00, вс выходной
+            </span>
+                                </div>
+                            </div>
+                        </div>
+                    <hr style="width:90%;border-top: 1px solid #333;" class="mt-5 mb-0">
+                    <div class="container box-footer">
+                        <div class="row">
+                        <div class="col-lg-11 col-10 copyright text-right pr-5">
+                            © 2002–2024 BESTLY продажа рекламных, выставочных и event&nbsp;материалов			</div>
+                        <div class="col-lg-4 col-5 socL text-left text-nowrap">
+                            <a rel="nofollow" href="https://vk.com/bestly_group" target="_blanc" class="icon-vk" title="Vkontakte"></a>
+            <a rel="nofollow" href="https://t.me/bestlyru" target="_blanc" class="icon-telegram" title="Telegram"></a>			</div>
+                        </div>
+                    </div>
+                    </div>
+                        <div class="elem-to-top" data-scroll-top=""></div>
+                    <script id="/rememberPassword/" type="text/ng-template">
+                        <form name="bform" method="post" action="/cutting/?forgot_password=yes" ng-controller="basketDetails" data-validate-form>
+                <i class="modal-close" ng-click="cancel()"></i>
+                        <input type="hidden" name="backurl" value="/cutting/" />
+                    <input type="hidden" name="AUTH_FORM" value="Y">
+                <input type="hidden" name="TYPE" value="SEND_PWD">        
+                <div class="modal-title">Восстановление пароля</div>
+                <p class="text-small">Для восстановления пароля введите E-mail, указанный при регистрации:</p>
+                <div class="form-group">
+                    <div class="control-label">E-mail:</div>
+                    <input type="email" class="form-control" name="USER_EMAIL" required>
+                </div>
+                <p class="text-small">На ваш E-mail будет выслано письмо с дальнейшими инструкциями.</p>
+                <div class="form-group">
+                    <div class="ajaxContainer"></div>
+                </div>    
+                <button class="btn btn-submit" type="submit" name="send_account_info" value="Отправить">Отправить</button>
+            </form>		</script>
+                </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
